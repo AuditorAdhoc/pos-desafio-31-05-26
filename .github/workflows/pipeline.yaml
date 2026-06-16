@@ -7,7 +7,7 @@ name: 'N1 - Execução Manual'
 permissions:
   # Permite escrever no repositório (para commits e pushes)
   contents: write
-  
+
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
 
@@ -54,10 +54,11 @@ jobs:
       - name: Executar testes
         run: yarn test
 
-      # Upload do relatório Mochawesome
+      # Verificar relatório Mochawesome
       - name: Verificar relatórios
-        run: find . -type f | grep mochawesome || true
-
+        if: hashFiles('reports/**') != ''
+      
+      # Upload do relatório Mochawesome
       - name: Upload do relatório
         uses: actions/upload-artifact@v4
         with:
