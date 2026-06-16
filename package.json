@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "e2e": "cypress run"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
