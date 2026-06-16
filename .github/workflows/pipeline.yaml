@@ -35,17 +35,14 @@ jobs:
       - name: Instalando dependências
         run: yarn
 
-      # instalação dos Browsers do Playwright
-      - name: Instalando Browsers do Playwright
-        run: yarn playwright install
-
       # executar os testes e2e
       - name: Executando testes e2e
         run: yarn run e2e
 
-      - name: Salvando relatórios de testes
+      # Upload do relatório Mochawesome
+      - name: Upload do relatório Mochawesome
+        if: hashFiles('reports/**') != ''
         uses: actions/upload-artifact@v4
-        if: ${{ always() }}
         with:
-          path: ./playwright-report
-          name: Relatório de Testes E2E
+          name: mochawesome-report
+          path: reports/
