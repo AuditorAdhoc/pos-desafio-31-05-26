@@ -53,10 +53,6 @@ jobs:
 
       - name: Executar testes
         run: yarn test
-
-      # Verificar relatório Mochawesome
-      - name: Verificar relatórios
-        run: find . -type f | grep mochawesome || true
       
       # Upload do relatório Mochawesome
       - name: Upload do relatório
