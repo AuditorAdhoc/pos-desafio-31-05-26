@@ -56,10 +56,11 @@ jobs:
 
       # Verificar relatório Mochawesome
       - name: Verificar relatórios
-        if: hashFiles('reports/**') != ''
+        run: find . -type f | grep mochawesome || true
       
       # Upload do relatório Mochawesome
       - name: Upload do relatório
+        if: hashFiles('reports/**') != ''
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
