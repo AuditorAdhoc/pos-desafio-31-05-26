@@ -13,7 +13,7 @@ on:
 
 jobs:
   #nome do job
-  e2e-tests:
+  test:
     # maquina onde o job vai rodar
     runs-on: ubuntu-latest
 
