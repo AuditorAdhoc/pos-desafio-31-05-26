@@ -3,6 +3,11 @@
 # nome da pipeline
 name: 'N1 - Execução Manual'
 
+# Permissões necessárias para a workflow
+permissions:
+  # Permite escrever no repositório (para commits e pushes)
+  contents: write
+  
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
 
