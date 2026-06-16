@@ -46,9 +46,12 @@ jobs:
       - name: Instalando dependências
         run: yarn
 
+      - name: Executar testes
+        run: yarn test
+
       # Upload do relatório Mochawesome
       - name: Verificar relatórios
-        run: find . -type f | grep mochawesome
+        run: find . -type f | grep mochawesome || true
 
       - name: Upload do relatório
         uses: actions/upload-artifact@v4
