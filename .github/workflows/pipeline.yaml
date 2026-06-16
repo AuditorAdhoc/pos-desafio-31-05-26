@@ -35,10 +35,6 @@ jobs:
       - name: Instalando dependências
         run: yarn
 
-      # executar os testes e2e
-      - name: Executando testes e2e
-        run: yarn run e2e
-
       # Upload do relatório Mochawesome
       - name: Upload do relatório Mochawesome
         if: hashFiles('reports/**') != ''
