@@ -19,7 +19,7 @@ on:
   push:
     branches:
     - main
-    
+
 #tarefas dentro da pipeline = jobs
 
 jobs:
@@ -47,8 +47,10 @@ jobs:
         run: yarn
 
       # Upload do relatório Mochawesome
-      - name: Upload do relatório Mochawesome
-        if: hashFiles('reports/**') != ''
+      - name: Verificar relatórios
+        run: find . -type f | grep mochawesome
+
+      - name: Upload do relatório
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
