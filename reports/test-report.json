@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-06-16T19:25:31.002Z",
+    "end": "2026-06-16T19:25:31.007Z",
+    "duration": 5,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f768e863-6fa0-4a85-8b1c-a10eab515ab3",
+      "title": "",
+      "fullFile": "C:\\Projetos\\pos-desafio-31-05-26\\test\\ServicoDePagamento.test.js",
+      "file": "\\test\\ServicoDePagamento.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6fb39ccf-439f-4733-a23f-6bacd993ef4b",
+          "title": "Classe de serviço de pagamento",
+          "fullFile": "C:\\Projetos\\pos-desafio-31-05-26\\test\\ServicoDePagamento.test.js",
+          "file": "\\test\\ServicoDePagamento.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validar que um pagamento MAIOR que R$ 100,00 reais é caro",
+              "fullTitle": "Classe de serviço de pagamento Validar que um pagamento MAIOR que R$ 100,00 reais é caro",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const servicoDePagamento = new ServicoDePagamento();\n    servicoDePagamento.pagar('1234-5678-9101', 'Samsung', 145.99);\n    const retorno = servicoDePagamento.consultarUltimoPagamento();\n    assert.equal(retorno.categoria, 'cara');",
+              "err": {},
+              "uuid": "fcbb37b9-d5cc-4e12-bad7-d3e5b551317e",
+              "parentUUID": "6fb39ccf-439f-4733-a23f-6bacd993ef4b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validar que um pagamento MENOR ou IGUAL a R$ 100,00 reais é padrão",
+              "fullTitle": "Classe de serviço de pagamento Validar que um pagamento MENOR ou IGUAL a R$ 100,00 reais é padrão",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const servicoDePagamento = new ServicoDePagamento();\n    servicoDePagamento.pagar('1234-5678-9101', 'Samsung', 99.99);\n    const retorno = servicoDePagamento.consultarUltimoPagamento();\n    assert.equal(retorno.categoria, 'padrão');",
+              "err": {},
+              "uuid": "0fc7d5e9-d89f-429e-bbf6-7c0a6a39e810",
+              "parentUUID": "6fb39ccf-439f-4733-a23f-6bacd993ef4b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validar método de consultar último pagamento",
+              "fullTitle": "Classe de serviço de pagamento Validar método de consultar último pagamento",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const servicoDePagamento = new ServicoDePagamento();\n    servicoDePagamento.pagar('0001', 'Xiaomi', 76.00);\n    servicoDePagamento.pagar('0002', 'Apple', 299.00);\n    const retorno = servicoDePagamento.consultarUltimoPagamento();\n    assert.equal(retorno.valor, 299.00);",
+              "err": {},
+              "uuid": "0ce536a8-8678-46ea-8fe0-059a438a4ab3",
+              "parentUUID": "6fb39ccf-439f-4733-a23f-6bacd993ef4b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validar retorno undefined quando não existir pagamento",
+              "fullTitle": "Classe de serviço de pagamento Validar retorno undefined quando não existir pagamento",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const servicoDePagamento = new ServicoDePagamento();\n    const retorno = servicoDePagamento.consultarUltimoPagamento();\n    assert.equal(retorno, undefined);",
+              "err": {},
+              "uuid": "82b34d1c-20b2-49ed-80ca-7b9a4c74a14b",
+              "parentUUID": "6fb39ccf-439f-4733-a23f-6bacd993ef4b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "fcbb37b9-d5cc-4e12-bad7-d3e5b551317e",
+            "0fc7d5e9-d89f-429e-bbf6-7c0a6a39e810",
+            "0ce536a8-8678-46ea-8fe0-059a438a4ab3",
+            "82b34d1c-20b2-49ed-80ca-7b9a4c74a14b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.6"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "test-report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports",
+        "reportFilename": "test-report",
+        "html": "true",
+        "json": "true"
+      },
+      "version": "6.3.2"
+    }
+  }
+}
