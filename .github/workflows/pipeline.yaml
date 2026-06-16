@@ -1,64 +1,81 @@
-# CI de Nível 01 - Disparo Manual através de clique
+# ============================================
+# Pipeline de Integração Contínua (CI) - Nível 1
+# Executada manualmente, por agendamento ou por push na branch main
+# ============================================
 
-# nome da pipeline
+# Nome exibido na lista de workflows do GitHub Actions
 name: 'N1 - Execução Manual'
 
-# Permissões necessárias para a workflow
+# Permissões utilizadas pela pipeline
 permissions:
-  # Permite escrever no repositório (para commits e pushes)
+  # Permite que a workflow realize operações de escrita no repositório
+  # como commits, pushes e atualizações de conteúdo
   contents: write
 
-# gatilhos / triggers - regras de disparo
-# gatilho manual = workflow_dispatch
-
+# Eventos que podem disparar a execução da pipeline
 on:
+
+  # Permite executar a pipeline manualmente pela interface do GitHub
   workflow_dispatch:
 
-# Agendada
+  # Agendamento automático da execução
   schedule:
-    # cronograma de execução
-    # 1 - minuto, 2 - hora, 3 dia do mês, 4 - mês, 5 - dia da semana
+    # Expressão Cron:
+    # Campo 1 = minuto
+    # Campo 2 = hora (UTC)
+    # Campo 3 = dia do mês
+    # Campo 4 = mês
+    # Campo 5 = dia da semana
 
-    #Roda as 16:43
+    # Executa diariamente às 19:43 UTC
+    # (equivalente a 16:43 no horário de Brasília, quando UTC-3)
     - cron: '43 19 * * *'
 
+  # Executa automaticamente quando houver push na branch main
   push:
     branches:
-    - main
+      - main
 
-#tarefas dentro da pipeline = jobs
-
+# Definição dos jobs que compõem a pipeline
 jobs:
-  #nome do job
+
+  # Job responsável pela instalação e execução dos testes
   test:
-    # maquina onde o job vai rodar
+
+    # Sistema operacional utilizado pelo runner do GitHub
     runs-on: ubuntu-latest
 
-    # passos do job
+    # Sequência de etapas executadas pelo job
     steps:
-      # clone do projeto
+
+      # Realiza o checkout do código-fonte do repositório
       - uses: actions/checkout@v4
 
-      # instalção do node
+      # Instala e configura a versão do Node.js necessária para o projeto
       - uses: actions/setup-node@v4
         with:
           node-version: 24.x
 
-      # instalação do Yarn
+      # Instala o gerenciador de pacotes Yarn globalmente
       - name: Instalando Yarn
         run: npm install -g yarn
 
-      #   instalação das dependências
+      # Instala todas as dependências definidas no projeto
       - name: Instalando dependências
         run: yarn
 
+      # Executa a suíte de testes automatizados
       - name: Executar testes
         run: yarn test
-      
-      # Upload do relatório Mochawesome
+
+      # Publica o relatório de testes como artefato da execução
+      # Somente será executado se existir algum arquivo dentro da pasta reports
       - name: Upload do relatório
         if: hashFiles('reports/**') != ''
         uses: actions/upload-artifact@v4
         with:
+          # Nome do artefato que ficará disponível para download
           name: mochawesome-report
+
+          # Caminho da pasta que contém os relatórios gerados
           path: reports/
